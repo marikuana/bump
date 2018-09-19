@@ -1,0 +1,14 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "teststart": "node index.js"
+  },
+  "author": "",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "request": "^2.88.0",
+  }
+}
