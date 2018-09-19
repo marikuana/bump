@@ -30,7 +30,7 @@ function bumping1f(){
 
 
 client.on('message',(message)=>{
-    const mesbump = message.guild.channels.get(process.env.GUILD_ID);
+    const mesbump = message.guild.channels.get(cid);
     const args = message.content.split(/ +/);
     const command = args[0].slice(prefix.length).toLowerCase();
         
@@ -38,13 +38,13 @@ client.on('message',(message)=>{
         bumping();
 
         function bumping(){
-            if (args[0]==='Please'){
+            if (args[0]=== process.env.text_1){
                 equation();
                 timer = 10;
                 timers();
                 return;
             }
-            if (args[0]==='Server') {
+            if (args[0]=== process.env.text_2) {
                 timer = parseInt(3600*4+30);
                 mesbump.send('Server bumped');
                 score = fs.readFileSync("score.txt", "utf8");
@@ -52,7 +52,7 @@ client.on('message',(message)=>{
                 timers();
                 return;
             }
-            if (args[0]==='Next'){
+            if (args[0]=== process.env.text_3){
                 timer = parseInt(args[7])*3600+parseInt(args[9])*60+60;
                 mesbump.send('Next bump point');
                 timers();
