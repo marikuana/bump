@@ -1,7 +1,7 @@
 {
   "name": "BOT",
   "version": "1.0.0",
-  "description": "",
+  "description": "Test",
   "main": "index.js",
   "scripts": {
     "teststart": "node index.js"
