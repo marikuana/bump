@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-//const fs = require('fs');
+const fs = require('fs');
 //const embed = new Discord.RichEmbed();
 
 const prefix = "!";
@@ -10,7 +10,7 @@ var timer = 5;
 var timerId;
 var score;
 var c = 00;
-const cid = '490676280472240158';
+const cid = process.env.GUILD_ID;
 
 
 
@@ -47,8 +47,8 @@ client.on('message',(message)=>{
             if (args[0]==='Server') {
                 timer = parseInt(3600*4+30);
                 mesbump.send('Server bumped');
-                //score = fs.readFileSync("score.txt", "utf8");
-                //fs.writeFileSync("score.txt", ++score);
+                score = fs.readFileSync("score.txt", "utf8");
+                fs.writeFileSync("score.txt", ++score);
                 timers();
                 return;
             }
