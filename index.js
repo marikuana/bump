@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 //const fs = require('fs');
-const embed = new Discord.RichEmbed();
+//const embed = new Discord.RichEmbed();
 
 const prefix = "!";
 client.login(process.env.BOT_TOKEN);
@@ -110,6 +110,7 @@ client.on('message',(message)=>{
 })
 
 client.on('error',(error)=>{
-    console.log("return error");
+	client.channels.get(cid).send('return error');
+    //console.log("return error");
 });
 
