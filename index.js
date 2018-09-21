@@ -21,7 +21,7 @@ client.on('ready',(ready)=>{
 
 function bumping1f(){
 
-    client.channels.get(cid).send('!bump');
+    client.channels.get(cid).send(process.env.text_0);
 	timer = 600;
     client.channels.get(cid).send('TIME: '+timer);
     timerId = setTimeout(bumping1f,timer*1000);
@@ -71,7 +71,7 @@ client.on('message',(message)=>{
         function bumping1(){
             funstats = 1;
             mesbump.send('Mes countent)  '+message.content);
-            mesbump.send('!bump');
+            mesbump.send(process.env.text_0);
 			timer = 600;
 			timers();
             return;
