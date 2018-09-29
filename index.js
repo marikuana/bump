@@ -33,7 +33,13 @@ client.on('message',(message)=>{
     const mesbump = message.guild.channels.get(cid);
     const args = message.content.split(/ +/);
     const command = args[0].slice(prefix.length).toLowerCase();
-        
+    if (message.guild){
+  	  if (message.content.match('discord.gg') || message.content.match('discord-server.com')) {
+        	message.delete();
+        	let r = message.guild.roles.find('name','Muted');
+        	message.member.addRole(r);
+    	}
+    }
     if (message.author.id =='315926021457051650'){
         bumping();
 
