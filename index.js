@@ -33,7 +33,7 @@ client.on('message',(message)=>{
     const mesbump = message.guild.channels.get(cid);
     const args = message.content.split(/ +/);
     const command = args[0].slice(prefix.length).toLowerCase();
-    if (message.guild){
+    if (message.guild.id == '362624570076692480'){
   	  if (message.content.match('discord.gg') || message.content.match('discord-server.com')) {
         	message.delete();
         	let r = message.guild.roles.find('name','Muted');
