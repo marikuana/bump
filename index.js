@@ -52,7 +52,7 @@ client.on('message',(message)=>{
             }
             if (args[0]=== process.env.text_2) {
                 timer = parseInt(3600*4+30);
-                mesbump.send('Server bumped');
+                //mesbump.send('Server bumped');
                 score = fs.readFileSync("score.txt", "utf8");
                 fs.writeFileSync("score.txt", ++score);
                 timers();
@@ -60,7 +60,7 @@ client.on('message',(message)=>{
             }
             if (args[0]=== process.env.text_3){
                 timer = parseInt(args[7])*3600+parseInt(args[9])*60+60;
-                mesbump.send('Next bump point');
+                //mesbump.send('Next bump point');
                 timers();
                 return;
             }
@@ -70,13 +70,13 @@ client.on('message',(message)=>{
       
         function timers(){
             clearTimeout(timerId);
-            mesbump.send('TIME: '+timer);
+            //mesbump.send('TIME: '+timer);
             timerId = setTimeout(bumping1,timer*1000);
         }
 
         function bumping1(){
             funstats = 1;
-            mesbump.send('Mes countent)  '+message.content);
+            //mesbump.send('Mes countent)  '+message.content);
             mesbump.send(process.env.text_0);
 			timer = 600;
 			timers();
