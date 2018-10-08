@@ -34,7 +34,7 @@ client.on('message',(message)=>{
     const args = message.content.split(/ +/);
     const command = args[0].slice(prefix.length).toLowerCase();
     if (message.guild.id == '362624570076692480'){
-  	  if (message.content.match('discord.gg') || message.content.match('discord-server.com') || message.content.match('discordapp.com/invite')) {
+  	  if (message.content.match('discord.gg') || message.content.match('discord-server.com') || message.content.match('discordapp.com/invite') || message.content.match('goo.gl/')) {
         	message.delete();
         	let r = message.guild.roles.find('name','Muted');
         	message.member.addRole(r);
