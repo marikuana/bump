@@ -48,6 +48,7 @@ function bump(GID){
 }
 
 client.on('message',(message)=>{
+    if (!message.guild) return;
     if (message.author.id=='465318048476430338') return;
     var GID = message.guild.id;
     if (GUI[GID] == null) return console.log('unk')
