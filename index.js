@@ -124,7 +124,7 @@ client.on('message',(message)=>{
 
     if (message.author.bot) return;
     if (command.startsWith(prefix)) return;
-    args.shift();
+    //args.shift();
     /*if(command === 'q'){
         //..................
     }*/
