@@ -35,7 +35,7 @@ function sbump(){
     for(var key in GUI){
         client.channels.get(GUI[key].CBump).send(text_0);
         GUI[key].timer = 600;
-        client.channels.get(GUI[key].CBump).send('TIME: '+GUI[key].timer);//H
+        //client.channels.get(GUI[key].CBump).send('TIME: '+GUI[key].timer);//H
         GUI[key].timerId = setTimeout(bump, GUI[key].timer*1000, key);
     }
 }
@@ -43,7 +43,7 @@ function sbump(){
 function bump(GID){
     client.channels.get(GUI[GID].CBump).send(text_0);
     GUI[GID].timer = 600;
-    client.channels.get(GUI[GID].CBump).send('TIME: '+GUI[GID].timer);//H
+    //client.channels.get(GUI[GID].CBump).send('TIME: '+GUI[GID].timer);//H
     GUI[GID].timerId = setTimeout(bump, GUI[GID].timer*1000, GID);
 }
 
@@ -69,13 +69,13 @@ client.on('message',(message)=>{
             }
             if (args[0]===text_2) {
                 GUI[GID].timer = parseInt(3600*4+30);
-                mesbump.send('Server bumped');//H
+                //mesbump.send('Server bumped');//H
                 timers(GID);
                 return;
             }
             if (args[0]===text_3){
                 GUI[GID].timer = parseInt(args[7])*3600+parseInt(args[9])*60+60;
-                mesbump.send('Next bump point');//H
+                //mesbump.send('Next bump point');//H
                 timers(GID);
                 return;
             }
@@ -85,7 +85,7 @@ client.on('message',(message)=>{
       
         function timers(GID){
             clearTimeout(GUI[GID].timerId);
-            mesbump.send('TIME: '+GUI[GID].timer);//H
+            //mesbump.send('TIME: '+GUI[GID].timer);//H
             GUI[GID].timerId = setTimeout(bump,GUI[GID].timer*1000, GID);
         }
 
