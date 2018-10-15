@@ -114,8 +114,8 @@ client.on('message',(message)=>{
                 c=a/b;
                 break;
                 default:
-                mesbump.send('Error 001')
-                mesbump.send(message.content);
+                mesbump.send('Error 002')
+                //mesbump.send(message.content);
                 break;
             }
             return f+c;
