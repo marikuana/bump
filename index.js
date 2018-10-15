@@ -44,7 +44,7 @@ function bump(GID){
     client.channels.get(GUI[GID].CBump).send(text_0);
     GUI[GID].timer = 600;
     client.channels.get(GUI[GID].CBump).send('TIME: '+GUI[GID].timer);//H
-    GUI[GID].timerId = setTimeout(bump, GUI[GID].timer*1000, key);
+    GUI[GID].timerId = setTimeout(bump, GUI[GID].timer*1000, GID);
 }
 
 client.on('message',(message)=>{
