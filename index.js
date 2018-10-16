@@ -24,12 +24,12 @@ GUI['501395544464293891'] = {
     timer: 5,
     timerId: 0
 }
-GUI['280345370372997140'] = {
+/*GUI['280345370372997140'] = {
     Guild: '280345370372997140',
     CBump: '280345370372997140',
     timer: 5,
     timerId: 0
-}
+}*/
 
 
 client.on('ready',(ready)=>{
@@ -59,7 +59,6 @@ client.on('message',(message)=>{
     var GID = message.guild.id;
     if (GUI[GID] == null) return console.log('unk')
     const args = message.content.split(/ +/);
-    const command = args[0].slice(prefix.length).toLowerCase();
     
     if (message.author.id =='315926021457051650'){
         var mesbump = message.guild.channels.get(GUI[GID].CBump);
@@ -122,12 +121,11 @@ client.on('message',(message)=>{
         }
     }
 
-    if (message.author.bot) return;
-    if (command.startsWith(prefix)) return;
-    //args.shift();
-    /*if(command === 'q'){
-        //..................
-    }*/
+    if (!message.content.startsWith(prefix) || message.author.bot) return;
+    const command = args.shift().slice(prefix.length).toLowerCase();
+    if(command === 'ping'){
+        message.channel.send('Ping : '+client.ping);
+    }
 })
 
 
