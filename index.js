@@ -39,7 +39,14 @@ client.on('ready',(ready)=>{
 
 function sbump(){
     for(var key in GUI){
-	if (!client.guilds.get(GUI[key].Guild).available) continue;
+	if (!client.guilds.get(GUI[key].Guild).available){
+		client.users.get('308921859179544577').send('Guild closed: ' + GUI[key].Guild);
+		continue;
+	}
+	if (!client.channels.get(GUI[key].CBump)) {
+		client.users.get('308921859179544577').send('Guild channel closed: ' + client.guilds.get(GUI[key].Guild).name);
+		continue;
+	}
         client.channels.get(GUI[key].CBump).send(text_0);
         GUI[key].timer = 600;
         //client.channels.get(GUI[key].CBump).send('TIME: '+GUI[key].timer);//H
