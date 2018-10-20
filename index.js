@@ -39,7 +39,7 @@ client.on('ready',(ready)=>{
 
 function sbump(){
     for(var key in GUI){
-	if (!client.guilds.get(GUI[key].Guild).available) return;
+	if (!client.guilds.get(GUI[key].Guild).available) continue;
         client.channels.get(GUI[key].CBump).send(text_0);
         GUI[key].timer = 600;
         //client.channels.get(GUI[key].CBump).send('TIME: '+GUI[key].timer);//H
