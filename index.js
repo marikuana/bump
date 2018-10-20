@@ -10,7 +10,7 @@ var text_0 = process.env.text_0;
 var text_1 = process.env.text_1;
 var text_2 = process.env.text_2;
 var text_3 = process.env.text_3;
-
+/////////////////////////
 var GUI = [];
 GUI['362624570076692480'] = {
     Guild: '362624570076692480',
@@ -39,22 +39,20 @@ client.on('ready',(ready)=>{
 
 function sbump(){
     for(var key in GUI){
-	if (!client.guilds.get(GUI[key].Guild).available){
-		client.users.get('308921859179544577').send('Guild closed: ' + GUI[key].Guild);
-		continue;
-	}
-	if (!client.channels.get(GUI[key].CBump)) {
-		client.users.get('308921859179544577').send('Guild channel closed: ' + client.guilds.get(GUI[key].Guild).name);
-		continue;
-	}
-        client.channels.get(GUI[key].CBump).send(text_0);
-        GUI[key].timer = 600;
-        //client.channels.get(GUI[key].CBump).send('TIME: '+GUI[key].timer);//H
-        GUI[key].timerId = setTimeout(bump, GUI[key].timer*1000, key);
-    }
+	    if (client.guilds.get(GUI[key].Guild) == undefined){
+	    	client.users.get('308921859179544577').send('Guild closed: ' + GUI[key].Guild);
+	    	continue;
+	    }
+            client.channels.get(GUI[key].CBump).send(text_0);
+            GUI[key].timer = 600;
+            //client.channels.get(GUI[key].CBump).send('TIME: '+GUI[key].timer);//H
+            GUI[key].timerId = setTimeout(bump, GUI[key].timer*1000, key);
+        }
 }
 
 function bump(GID){
+    if (client.guilds.get(GUI[GID].Guild) == undefined)
+        client.users.get('308921859179544577').send('Guild closed: ' + GUI[GID].Guild);
     client.channels.get(GUI[GID].CBump).send(text_0);
     GUI[GID].timer = 600;
     //client.channels.get(GUI[GID].CBump).send('TIME: '+GUI[GID].timer);//H
@@ -65,7 +63,7 @@ client.on('message',(message)=>{
     if (!message.guild) return;
     if (message.author.id=='465318048476430338') return;
     var GID = message.guild.id;
-    if (GUI[GID] == null) return console.log('unk')
+    if (GUI[GID] == null) return;// console.log('unk')
     const args = message.content.split(/ +/);
     
     if (message.author.id =='315926021457051650'){
@@ -132,7 +130,7 @@ client.on('message',(message)=>{
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     const command = args.shift().slice(prefix.length).toLowerCase();
     if(command === 'ping'){
-        message.channel.send('Ping : '+client.ping);
+        message.channel.send({embed:{description: '**Ping : '+client.ping+'**', color: 255*255}});
     }
 })
 
