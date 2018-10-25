@@ -136,7 +136,7 @@ client.on('message',(message)=>{
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     const command = args.shift().slice(prefix.length).toLowerCase();
     if(command === 'ping'){
-        message.channel.send({embed:{description: '**Ping : '+client.ping+'**', color: 255*255}});
+        message.channel.send('**Ping : '+client.ping+'**');
     }
 })
 
