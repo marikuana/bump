@@ -6,6 +6,9 @@ const prefix = "!";
 const token = process.env.BOT_TOKEN; 
 client.login(token);
 
+const OwID = process.env.OwnerID;
+var Owner;
+
 var text_0 = process.env.text_0;
 var text_1 = process.env.text_1;
 var text_2 = process.env.text_2;
@@ -24,27 +27,30 @@ GUI['501395544464293891'] = {//22222
     timer: 5,
     timerId: 0
 }
-GUI['391295876058054656'] = {//Ukra YT team
+/*GUI['391295876058054656'] = {//Ukra YT team
     Guild: '391295876058054656',
     CBump: '503178720182272050',
     timer: 5,
     timerId: 0
-}
+}*/
 
 
 
 client.on('ready',(ready)=>{
     console.log('ready');
+    Owner = client.users.get(OwID);
     sbump();
 })
 
 function sbump(){
     for(var key in GUI){
-	    if (client.guilds.get(GUI[key].Guild) == undefined){
-	    	client.users.get('308921859179544577').send('Guild closed: ' + GUI[key].Guild);
+        var guild = client.guilds.get(GUI[key].Guild);
+	    if (guild == undefined){
+            Owner.send('Guild closed: ' + GUI[key].Guild);
 	    	continue;
 	    }
-            client.channels.get(GUI[key].CBump).send(text_0).catch(()=>{client.users.get('308921859179544577').send('Channel closed: ' + GUI[key].CBump)});
+            client.channels.get(GUI[key].CBump).send(text_0)
+            .catch((e)=>{Owner.send(`Channel closed: ${GUI[key].CBump}\nGuild: ${guild.name || guild.id}\nReason: ${e}`)});
             GUI[key].timer = 600;
             //client.channels.get(GUI[key].CBump).send('TIME: '+GUI[key].timer);//H
             GUI[key].timerId = setTimeout(bump, GUI[key].timer*1000, key);
@@ -54,9 +60,8 @@ function sbump(){
 function bump(GID){
     if (client.guilds.get(GUI[GID].Guild) == undefined)
         return client.users.get('308921859179544577').send('Guild closed: ' + GUI[GID].Guild);
-    if (client.channels.get(GUI[GID].CBump) == undefined) 
-	return client.users.get('308921859179544577').send('Channel closed: ' + GUI[GID].CBump);
-    client.channels.get(GUI[GID].CBump).send(text_0);
+    client.channels.get(GUI[GID].CBump).send(text_0)
+    .catch((e)=>{Owner.send(`Channel closed: ${GUI[GID].CBump}\nGuild: ${guild.name || guild.id}\nReason: ${e}`)});
     GUI[GID].timer = 600;
     //client.channels.get(GUI[GID].CBump).send('TIME: '+GUI[GID].timer);//H
     GUI[GID].timerId = setTimeout(bump, GUI[GID].timer*1000, GID);
