@@ -30,6 +30,12 @@ GUI['391295876058054656'] = {//Ukra YT team
     timer: 5,
     timerId: 0
 }
+GUI['429558425035341824'] = {//в гостях
+    Guild: '429558425035341824',
+    CBump: '497773520336453638',
+    timer: 5,
+    timerId: 0
+}
 
 
 client.on('ready',(ready)=>{
@@ -91,7 +97,7 @@ client.on('message',(message)=>{
                 return;
             }
             //mesbump.send('1) '+ args[0]);
-            return mesbump.send('Error: 001');
+            return mesbump.send('Code: 001');
         }
       
         function timers(GID){
