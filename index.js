@@ -30,12 +30,7 @@ GUI['391295876058054656'] = {//Ukra YT team
     timer: 5,
     timerId: 0
 }
-GUI['429558425035341824'] = {//в гостях
-    Guild: '429558425035341824',
-    CBump: '497773520336453638',
-    timer: 5,
-    timerId: 0
-}
+
 
 
 client.on('ready',(ready)=>{
@@ -49,6 +44,10 @@ function sbump(){
 	    	client.users.get('308921859179544577').send('Guild closed: ' + GUI[key].Guild);
 	    	continue;
 	    }
+	    if (client.channels.get(GUI[key].CBump) == undefined) {
+		client.users.get('308921859179544577').send('Channel closed: ' + GUI[key].CBump);
+	    	continue;
+	    }
             client.channels.get(GUI[key].CBump).send(text_0);
             GUI[key].timer = 600;
             //client.channels.get(GUI[key].CBump).send('TIME: '+GUI[key].timer);//H
@@ -58,7 +57,9 @@ function sbump(){
 
 function bump(GID){
     if (client.guilds.get(GUI[GID].Guild) == undefined)
-        client.users.get('308921859179544577').send('Guild closed: ' + GUI[GID].Guild);
+        return client.users.get('308921859179544577').send('Guild closed: ' + GUI[GID].Guild);
+    if (client.channels.get(GUI[GID].CBump) == undefined) 
+	return client.users.get('308921859179544577').send('Channel closed: ' + GUI[GID].CBump);
     client.channels.get(GUI[GID].CBump).send(text_0);
     GUI[GID].timer = 600;
     //client.channels.get(GUI[GID].CBump).send('TIME: '+GUI[GID].timer);//H
