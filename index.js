@@ -44,11 +44,7 @@ function sbump(){
 	    	client.users.get('308921859179544577').send('Guild closed: ' + GUI[key].Guild);
 	    	continue;
 	    }
-	    if (client.channels.get(GUI[key].CBump) == undefined) {
-		client.users.get('308921859179544577').send('Channel closed: ' + GUI[key].CBump);
-	    	continue;
-	    }
-            client.channels.get(GUI[key].CBump).send(text_0);
+            client.channels.get(GUI[key].CBump).send(text_0).catch(()=>client.users.get('308921859179544577').send('Channel closed: ' + GUI[key].CBump););
             GUI[key].timer = 600;
             //client.channels.get(GUI[key].CBump).send('TIME: '+GUI[key].timer);//H
             GUI[key].timerId = setTimeout(bump, GUI[key].timer*1000, key);
