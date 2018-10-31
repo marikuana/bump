@@ -143,7 +143,7 @@ client.on('message',(message)=>{
     if(command === 'ping'){
         message.channel.send('**Ping : '+client.ping+'**');
     }
-    if (command === 'uptime'){
+    if(command === 'uptime'){
 	const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
     	message.channel.send(duration);
     }
