@@ -30,12 +30,6 @@ GUI['501395544464293891'] = {//22222
     timer: 5,
     timerId: 0
 }
-/*GUI['391295876058054656'] = {//Ukra YT team
-    Guild: '391295876058054656',
-    CBump: '503178720182272050',
-    timer: 5,
-    timerId: 0
-}*/
 
 
 
@@ -143,10 +137,10 @@ client.on('message',(message)=>{
     if(command === 'ping'){
         message.channel.send('**Ping : '+client.ping+'**');
     }
-    if(command === 'uptime'){
+    /*if(command === 'uptime'){
 	//const duration = moment.duration(client.uptime);//.format(" D [days], H [hrs], m [mins], s [secs]");
     	message.channel.send(client.uptime);
-    }
+    }*/
 })
 
 
