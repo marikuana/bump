@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const embed = new Discord.RichEmbed();
 
-const moment = require("moment");
+//const moment = require("moment");
 //require("moment-duration-format");
 
 const prefix = "!";
