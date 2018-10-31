@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const embed = new Discord.RichEmbed();
 
 const moment = require("moment");
-require("moment-duration-format");
+//require("moment-duration-format");
 
 const prefix = "!";
 const token = process.env.BOT_TOKEN; 
@@ -144,7 +144,7 @@ client.on('message',(message)=>{
         message.channel.send('**Ping : '+client.ping+'**');
     }
     if(command === 'uptime'){
-	const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+	const duration = moment.duration(client.uptime);//.format(" D [days], H [hrs], m [mins], s [secs]");
     	message.channel.send(duration);
     }
 })
